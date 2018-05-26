@@ -56,7 +56,10 @@ def main(args):
                 while t < time_steps: #and not done:
                     t = t + 1
                     
-                    action = config.generate_data_action(t, action)
+                    # action = config.generate_data_action(t, action)
+                    action = env.action_space.sample()
+                    action[6] = 0
+                    action[7] = 1
                     
                     obs_sequence.append(observation)
                     action_sequence.append(action)
@@ -64,8 +67,9 @@ def main(args):
                     observation, reward, done, info = env.step(action)
                     observation = config.adjust_obs(observation)
 
-                    if render:
-                        env.render()
+                    # if render:
+                    #     env.render()
+                    env.render()
 
                 obs_data.append(obs_sequence)
                 action_data.append(action_sequence)

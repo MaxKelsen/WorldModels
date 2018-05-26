@@ -26,5 +26,5 @@ def generate_data_action(t, current_action):
 def adjust_obs(obs):
     return obs.astype('float32') / 255.
 
-train_envs = ['car_racing']
-test_envs = ['car_racing']
+train_envs = ['sonic']
+test_envs = ['sonic']

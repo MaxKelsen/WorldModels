@@ -1,9 +1,30 @@
 #python 02_train_vae.py --new_model
 
-from vae.arch import VAE
+from vae.arch128_rect import VAE
 import argparse
 import numpy as np
 import config
+
+import time
+import scipy.misc
+
+import cv2
+
+def downscale_images(img_array):
+    import matplotlib.pyplot as plt
+    import matplotlib.image as mpimg
+    print("Input image array has shape: " + str(img_array.shape))
+    i = 0
+    resized = []
+    for img in img_array:
+        res = cv2.resize(img, dsize=(128, 128), interpolation=cv2.INTER_CUBIC)
+        resized.append(res)
+        scipy.misc.imsave('images/img' + str(i) + '.jpg', img)
+        scipy.misc.imsave('images/res' + str(i) + '.jpg', res)
+        i += 1
+    res_array = np.stack(resized, axis=0)
+    print("Resized to new array of shape: " + str(res_array.shape))
+    return img_array
 
 def main(args):
 
@@ -39,7 +60,9 @@ def main(args):
         pass
 
     if first_item == False: # i.e. data has been found for this batch number
-      data = np.array([item for obs in data for item in obs])
+      # here data is every image in batch with shape (6000, 224, 320, 3)
+      data = np.array([item for obs in data for item in obs]) 
+      data = downscale_images(data)  # scale images to 64*64
       vae.train(data)
     else:
       print('no data found for batch number {}'.format(batch_num))
