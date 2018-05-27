@@ -21,7 +21,7 @@ CONV_T_STRIDES = [2,2,2,2,2]
 CONV_T_ACTIVATIONS = ['relu','relu','relu','relu','sigmoid']
 # CONV_T_ACTIVATIONS = ['relu','relu','relu','tanh','sigmoid']
 
-Z_DIM = 64
+Z_DIM = 128
 
 EPOCHS = 1
 BATCH_SIZE = 32
