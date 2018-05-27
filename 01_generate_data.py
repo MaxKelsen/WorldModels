@@ -7,6 +7,7 @@ import config
 
 from env import make_env
 
+
 import argparse
 
 def main(args):
@@ -38,6 +39,7 @@ def main(args):
             obs_data = []
             action_data = []
 
+            # populate batches of size (batch_size) rollouts
             for i_episode in range(batch_size):
                 print('-----')
                 observation = env.reset()
@@ -53,6 +55,7 @@ def main(args):
                 obs_sequence = []
                 action_sequence = []
 
+                # populate rollout of size (time_steps)
                 while t < time_steps: #and not done:
                     t = t + 1
                     
