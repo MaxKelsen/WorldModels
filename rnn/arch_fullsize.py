@@ -114,7 +114,7 @@ class RNN():
 
     def train(self, rnn_input, rnn_output, validation_split = 0.2):
 
-        earlystop = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=5, verbose=1, mode='auto')
+        earlystop = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=50, verbose=1, mode='auto')
         callbacks_list = [earlystop]
 
         self.model.fit(rnn_input, rnn_output,

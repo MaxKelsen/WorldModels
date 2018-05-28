@@ -1,6 +1,6 @@
 #python 02_train_vae.py --new_model
 
-from vae.arch128_rect import VAE
+from vae.arch_fullsize import VAE
 import argparse
 import numpy as np
 import config
