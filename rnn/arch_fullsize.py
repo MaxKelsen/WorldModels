@@ -7,13 +7,13 @@ from keras import backend as K
 from keras.callbacks import EarlyStopping
 
 Z_DIM = 128
-ACTION_DIM = 3
+ACTION_DIM = 12
 
 HIDDEN_UNITS = 1024
 GAUSSIAN_MIXTURES = 5
 
 BATCH_SIZE = 32
-EPOCHS = 20
+EPOCHS = 50
 
 def get_mixture_coef(y_pred):
     

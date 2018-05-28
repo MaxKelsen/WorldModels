@@ -41,6 +41,7 @@ def main(args):
             print(obs_data.shape)
 
             rnn_input, rnn_output = vae.generate_rnn_data(obs_data, action_data)
+            print(str(rnn_input.shape), str(rnn_output.shape), str(obs_data.shape), str(action_data.shape))
             np.save('./data/rnn_input_' + game + '_' + state + '_' + str(batch_num), rnn_input)
             np.save('./data/rnn_output_' + game + '_' + state + '_' + str(batch_num), rnn_output)
 
