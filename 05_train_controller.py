@@ -1,6 +1,9 @@
 #python 05_train_controller.py car_racing -e 1 -n 4 -t 1 --max_length 1000
 #xvfb-run -a -s "-screen 0 1400x900x24" python 05_train_controller.py car_racing -n 16 -t 2 -e 4 --max_length 1000
 
+# import os
+# os.environ['DYLD_FALLBACK_LIBRARY_PATH'] = '/lib:/usr/lib:/usr/bin/lib:/' + os.environ['DYLD_FALLBACK_LIBRARY_PATH'];
+
 from mpi4py import MPI
 import numpy as np
 import json
@@ -13,14 +16,12 @@ import random
 
 from pympler.tracker import SummaryTracker
 
-
 from model import make_model, simulate
 from es import CMAES, SimpleGA, OpenES, PEPG
 import argparse
 import time
 
 import config
-
 
 
 ### ES related code - parameters are just dummy values so do not edit here. Instead, set in the args to the script.
